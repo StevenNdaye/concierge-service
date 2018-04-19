@@ -1,0 +1,18 @@
+weather:
+  url: http://localhost:8089
+  api-secret: some-test-api-key
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/concierge
+    username: stevenndaye
+    password:
+    platform: POSTGRESQL
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false

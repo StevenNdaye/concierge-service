@@ -1,0 +1,18 @@
+weather:
+  url: https://api.darksky.net/forecast
+  api-secret: 142c69d90a464c4749f1334b9cf01c4d
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/concierge
+    username: stevenndaye
+    password:
+    platform: POSTGRESQL
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
