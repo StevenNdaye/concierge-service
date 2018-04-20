@@ -1,6 +1,6 @@
 weather:
   url: https://api.darksky.net/forecast
-  api-secret: 142c69d90a464c4749f1334b9cf01c4d
+  api-secret: ReplaceWithYoursOrDoSomeConfigurations
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/concierge
