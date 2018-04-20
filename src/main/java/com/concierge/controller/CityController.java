@@ -34,6 +34,7 @@ public class CityController {
                 () -> new CityNotFoundException(String.format("The queried %s city does not exist in our system", name)));
     }
 
+    @GetMapping(value = "/weather", params = {"name"})
     public String fetchWeatherSummary(String name) {
 
         Optional<WeatherResponse> weather = weatherClient.fetchWeather(name);

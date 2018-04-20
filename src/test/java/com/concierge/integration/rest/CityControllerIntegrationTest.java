@@ -2,6 +2,7 @@ package com.concierge.integration.rest;
 
 import com.concierge.client.WeatherClient;
 import com.concierge.controller.CityController;
+import com.concierge.domain.WeatherResponse;
 import com.concierge.entity.City;
 import com.concierge.repository.CityRepository;
 import org.junit.Test;
@@ -42,6 +43,19 @@ public class CityControllerIntegrationTest {
 
         mockMvc.perform(get("/cities?name=Johannesburg"))
                 .andExpect(content().json(expectedCity.toString()))
+                .andExpect(status().is2xxSuccessful());
+    }
+
+    @Test
+    public void shouldFetchCityWeather() throws Exception {
+
+        WeatherResponse expectedWeatherResponse = new WeatherResponse("Rain");
+
+        given(weatherClient.fetchWeather("Johannesburg"))
+                .willReturn(Optional.of(expectedWeatherResponse));
+
+        mockMvc.perform(get("/cities/weather?name=Johannesburg"))
+                .andExpect(content().string("Rain"))
                 .andExpect(status().is2xxSuccessful());
     }
 }
