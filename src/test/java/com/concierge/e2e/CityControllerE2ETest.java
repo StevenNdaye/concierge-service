@@ -32,7 +32,7 @@ public class CityControllerE2ETest {
         cityRepository.save(expectedCity);
 
         when()
-                .get(String.format("http://localhost:%s/cities?name=Johannesburg", port))
+                .get(String.format("http://localhost:%s/v1/cities?name=Johannesburg", port))
                 .then()
                 .statusCode(is(200));
     }

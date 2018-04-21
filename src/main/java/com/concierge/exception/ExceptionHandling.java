@@ -1,36 +1,44 @@
 package com.concierge.exception;
 
+import org.springframework.hateoas.VndErrors;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestController;
 
-@ControllerAdvice
+import java.util.Optional;
+
+@ControllerAdvice(annotations = RestController.class)
 public class ExceptionHandling {
-    @ExceptionHandler(CityNotFoundException.class)
-    public ResponseEntity<ExceptionResponse> resourceNotFound(CityNotFoundException ex) {
-        ExceptionResponse response = new ExceptionResponse();
-        response.setErrorCode(HttpStatus.NOT_FOUND.value());
-        response.setErrorMessage(ex.getMessage());
 
-        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    private final MediaType vndErrorMediaType = MediaType.parseMediaType("application/vnd.error+json");
+
+    @ExceptionHandler(CityNotFoundException.class)
+    public ResponseEntity<VndErrors> resourceNotFound(CityNotFoundException ex) {
+        return this.error(ex, HttpStatus.NOT_FOUND, ex.getCityName() + "");
     }
 
     @ExceptionHandler(CustomerNotFoundException.class)
-    public ResponseEntity<ExceptionResponse> customerNotFound(CustomerNotFoundException ex) {
-        ExceptionResponse response = new ExceptionResponse();
-        response.setErrorCode(HttpStatus.NOT_FOUND.value());
-        response.setErrorMessage(ex.getMessage());
-
-        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    public ResponseEntity<VndErrors> customerNotFound(CustomerNotFoundException ex) {
+        return this.error(ex, HttpStatus.NOT_FOUND, ex.getId() + "");
     }
 
     @ExceptionHandler(ServiceUnavailableException.class)
-    public ResponseEntity<ExceptionResponse> serviceUnavailable(ServiceUnavailableException ex) {
-        ExceptionResponse response = new ExceptionResponse();
-        response.setErrorCode(HttpStatus.EXPECTATION_FAILED.value());
-        response.setErrorMessage(ex.getMessage());
+    public ResponseEntity<VndErrors> serviceUnavailable(ServiceUnavailableException ex) {
+        return this.error(ex, HttpStatus.EXPECTATION_FAILED, ex.getCityName() + "");
+    }
 
-        return new ResponseEntity<>(response, HttpStatus.EXPECTATION_FAILED);
+    private <E extends Exception> ResponseEntity<VndErrors> error(E error, HttpStatus httpStatus, String logRef) {
+        String msg = Optional.of(error.getMessage())
+                .orElse(error.getClass().getSimpleName());
+
+        HttpHeaders httpHeaders = new HttpHeaders();
+
+        httpHeaders.setContentType(this.vndErrorMediaType);
+
+        return new ResponseEntity<>(new VndErrors(logRef, msg), httpHeaders, httpStatus);
     }
 }

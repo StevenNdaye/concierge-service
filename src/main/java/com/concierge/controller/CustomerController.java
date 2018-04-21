@@ -59,7 +59,7 @@ public class CustomerController {
     ResponseEntity<Customer> get(@PathVariable Long id) {
         return this.customerRepository.findById(id)
                 .map(ResponseEntity::ok)
-                .orElseThrow(() -> new CustomerNotFoundException(id));
+                .orElseThrow(() -> new CustomerNotFoundException(String.format("Customer with id %s not found", id), id));
     }
 
     @PostMapping
@@ -80,14 +80,14 @@ public class CustomerController {
                 .map(c -> {
                     customerRepository.delete(c);
                     return ResponseEntity.noContent().build();
-                }).orElseThrow(() -> new CustomerNotFoundException(id));
+                }).orElseThrow(() -> new CustomerNotFoundException(String.format("Customer with id %s not found", id), id));
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.HEAD)
     ResponseEntity<?> head(@PathVariable Long id) {
         return this.customerRepository.findById(id)
                 .map(exists -> ResponseEntity.noContent().build())
-                .orElseThrow(() -> new CustomerNotFoundException(id));
+                .orElseThrow(() -> new CustomerNotFoundException(String.format("Customer with id %s not found", id), id));
     }
 
     @PutMapping(value = "/{id}")
@@ -99,7 +99,7 @@ public class CustomerController {
                     Customer customer = this.customerRepository.save(new Customer(existing.getId(), c.getFirstName(), c.getLastName()));
                     URI selfLink = URI.create(fromCurrentRequest().toUriString());
                     return ResponseEntity.created(selfLink).body(customer);
-                }).orElseThrow(() -> new CustomerNotFoundException(id));
+                }).orElseThrow(() -> new CustomerNotFoundException(String.format("Customer with id %s not found", id), id));
 
     }
 
@@ -113,7 +113,7 @@ public class CustomerController {
                     Resource fileSystemResource = new FileSystemResource(file);
                     return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG)
                             .body(fileSystemResource);
-                }).orElseThrow(() -> new CustomerNotFoundException(id));
+                }).orElseThrow(() -> new CustomerNotFoundException(String.format("Customer with id %s not found", id), id));
     }
 
     @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT}, value = "/{id}/photo")
@@ -142,7 +142,7 @@ public class CustomerController {
 
                     return ResponseEntity.created(location)
                             .build();
-                }).orElseThrow(() -> new CustomerNotFoundException(id));
+                }).orElseThrow(() -> new CustomerNotFoundException(String.format("Customer with id %s not found", id), id));
     }
 
     private File fileFor(Customer customer) {

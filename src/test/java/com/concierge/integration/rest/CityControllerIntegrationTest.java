@@ -41,7 +41,7 @@ public class CityControllerIntegrationTest {
         given(cityRepository.findByName("Johannesburg"))
                 .willReturn(Optional.of(expectedCity));
 
-        mockMvc.perform(get("/cities?name=Johannesburg"))
+        mockMvc.perform(get("/v1/cities?name=Johannesburg"))
                 .andExpect(content().json(expectedCity.toString()))
                 .andExpect(status().is2xxSuccessful());
     }
@@ -54,7 +54,7 @@ public class CityControllerIntegrationTest {
         given(weatherClient.fetchWeather("Johannesburg"))
                 .willReturn(Optional.of(expectedWeatherResponse));
 
-        mockMvc.perform(get("/cities/weather?name=Johannesburg"))
+        mockMvc.perform(get("/v1/cities/weather?name=Johannesburg"))
                 .andExpect(content().string("Rain"))
                 .andExpect(status().is2xxSuccessful());
     }

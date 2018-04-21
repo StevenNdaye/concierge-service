@@ -31,7 +31,7 @@ public class CityController {
         Optional<City> city = cityRepository.findByName(name);
 
         return city.orElseThrow(
-                () -> new CityNotFoundException(String.format("The queried %s city does not exist in our system", name)));
+                () -> new CityNotFoundException(String.format("The queried %s city does not exist in our system", name), name));
     }
 
     @GetMapping(value = "/weather", params = {"name"})
@@ -40,6 +40,6 @@ public class CityController {
         Optional<WeatherResponse> weather = weatherClient.fetchWeather(name);
 
         return weather.map(WeatherResponse::getSummary)
-                .orElseThrow(() -> new ServiceUnavailableException("Weather service currently unavailable"));
+                .orElseThrow(() -> new ServiceUnavailableException("Weather service currently unavailable", name));
     }
 }
