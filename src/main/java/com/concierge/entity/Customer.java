@@ -1,6 +1,14 @@
-package com.concierge.domain;
+package com.concierge.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity(name = "customers")
 public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String lastName;
     private String firstName;
@@ -14,6 +22,9 @@ public class Customer {
     public Customer(String lastName, String firstName) {
         this.lastName = lastName;
         this.firstName = firstName;
+    }
+
+    public Customer() {
     }
 
     public String getLastName() {

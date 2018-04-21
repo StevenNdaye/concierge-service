@@ -1,6 +1,6 @@
 package com.concierge.repository;
 
-import com.concierge.domain.Customer;
+import com.concierge.entity.Customer;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

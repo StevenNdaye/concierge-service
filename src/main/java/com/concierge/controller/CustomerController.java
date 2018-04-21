@@ -1,6 +1,6 @@
 package com.concierge.controller;
 
-import com.concierge.domain.Customer;
+import com.concierge.entity.Customer;
 import com.concierge.exception.CustomerNotFoundException;
 import com.concierge.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,7 +83,7 @@ public class CustomerController {
                     URI selfLink = URI.create(ServletUriComponentsBuilder.fromCurrentRequest().toUriString());
                     return ResponseEntity.created(selfLink).body(customer);
                 }).orElseThrow(() -> new CustomerNotFoundException(id));
-        
+
     }
 
 }
