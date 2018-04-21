@@ -16,6 +16,15 @@ public class ExceptionHandling {
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(CustomerNotFoundException.class)
+    public ResponseEntity<ExceptionResponse> customerNotFound(CustomerNotFoundException ex) {
+        ExceptionResponse response = new ExceptionResponse();
+        response.setErrorCode(HttpStatus.NOT_FOUND.value());
+        response.setErrorMessage(ex.getMessage());
+
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
     @ExceptionHandler(ServiceUnavailableException.class)
     public ResponseEntity<ExceptionResponse> serviceUnavailable(ServiceUnavailableException ex) {
         ExceptionResponse response = new ExceptionResponse();

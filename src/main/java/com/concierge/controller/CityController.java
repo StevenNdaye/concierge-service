@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("cities")
+@RequestMapping("/v1/cities")
 public class CityController {
 
     private CityRepository cityRepository;
