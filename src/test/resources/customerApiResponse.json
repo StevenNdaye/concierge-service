@@ -1,0 +1,130 @@
+[
+  {
+    "id": 1,
+    "firstName": "Steven",
+    "lastName": "Ndaye",
+    "birthDate": 551656800000,
+    "enrollment": 1168639200000,
+    "status": "GOOD_STANDING"
+  },
+  {
+    "id": 2,
+    "firstName": "Aslam",
+    "lastName": "Khan",
+    "birthDate": 569628000000,
+    "enrollment": 1171317600000,
+    "status": "BANKRUPT"
+  },
+  {
+    "id": 3,
+    "firstName": "Tsatsi",
+    "lastName": "Mahase",
+    "birthDate": 537314400000,
+    "enrollment": 1173736800000,
+    "status": "DEBT"
+  },
+  {
+    "id": 4,
+    "firstName": "Thato",
+    "lastName": "Morobane",
+    "birthDate": 543535200000,
+    "enrollment": 1171404000000,
+    "status": "BANKRUPT"
+  },
+  {
+    "id": 5,
+    "firstName": "Charlene",
+    "lastName": "Tshitoka",
+    "birthDate": 646351200000,
+    "enrollment": 1169244000000,
+    "status": "DEBT"
+  },
+  {
+    "id": 6,
+    "firstName": "Claude",
+    "lastName": "Mwamba",
+    "birthDate": 544485600000,
+    "enrollment": 1179007200000,
+    "status": "GOOD_STANDING"
+  },
+  {
+    "id": 7,
+    "firstName": "Jonah",
+    "lastName": "Kuria",
+    "birthDate": 538092000000,
+    "enrollment": 1179439200000,
+    "status": "BANKRUPT"
+  },
+  {
+    "id": 8,
+    "firstName": "Orville",
+    "lastName": "Khangale",
+    "birthDate": 520466400000,
+    "enrollment": 1174341600000,
+    "status": "BANKRUPT"
+  },
+  {
+    "id": 9,
+    "firstName": "Ted",
+    "lastName": "Cruz",
+    "birthDate": -111031200000,
+    "enrollment": 1168293600000,
+    "status": "GOOD_STANDING"
+  },
+  {
+    "id": 10,
+    "firstName": "Clinton",
+    "lastName": "Hillary",
+    "birthDate": -490240800000,
+    "enrollment": 1176933600000,
+    "status": "DEBT"
+  },
+  {
+    "id": 11,
+    "firstName": "Donald",
+    "lastName": "Trump",
+    "birthDate": 596066400000,
+    "enrollment": 1174773600000,
+    "status": "BANKRUPT"
+  },
+  {
+    "id": 12,
+    "firstName": "Jacob",
+    "lastName": "Zuma",
+    "birthDate": 500508000000,
+    "enrollment": 1168898400000,
+    "status": "GOOD_STANDING"
+  },
+  {
+    "id": 13,
+    "firstName": "Lindie",
+    "lastName": "Kruger",
+    "birthDate": 629416800000,
+    "enrollment": 1202853600000,
+    "status": "BANKRUPT"
+  },
+  {
+    "id": 14,
+    "firstName": "Grace",
+    "lastName": "Kibambe",
+    "birthDate": 392162400000,
+    "enrollment": 1174341600000,
+    "status": "BANKRUPT"
+  },
+  {
+    "id": 15,
+    "firstName": "Stephanie",
+    "lastName": "Muka",
+    "birthDate": 362613600000,
+    "enrollment": 1170021600000,
+    "status": "DEBT"
+  },
+  {
+    "id": 16,
+    "firstName": "Steven",
+    "lastName": "Ndaye",
+    "birthDate": 551656800000,
+    "enrollment": 1168639200000,
+    "status": "DEBT"
+  }
+]

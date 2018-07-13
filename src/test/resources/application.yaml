@@ -1,6 +1,8 @@
 weather:
   url: http://localhost:8089
   api-secret: some-test-api-key
+customer:
+  url: http://localhost:8080
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/concierge
